@@ -5,6 +5,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 @SpringBootApplication
 public class TwilioDemoApplication implements ApplicationRunner {
@@ -22,6 +24,8 @@ public class TwilioDemoApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        Message.creator(new PhoneNumber("To"), new PhoneNumber("From"),
+                "Incoming Message from Twilio Demo Application").create();
 
     }
 }
